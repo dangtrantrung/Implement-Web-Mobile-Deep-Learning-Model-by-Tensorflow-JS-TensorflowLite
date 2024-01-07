@@ -12,9 +12,10 @@ app.config['CORS_HEADERS'] ='Content-Type'
 
 # Hàm xử lý request
 @app.route("/", methods=['GET'])
+# @cross_origin()
 def home_page():
     return render_template('index.html')
 
 
 if __name__ == '__main__':
-    app.run(ssl_context='adhoc',host='0.0.0.0', port=5000)
+    app.run(ssl_context='adhoc',host='0.0.0.0', debug=False)

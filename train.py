@@ -15,7 +15,7 @@ n_class=5
 def get_model():
      # Create Base Model
     base_model = MobileNet(include_top=False, weights="imagenet", input_shape=(224,224,3))
-    # Buil model
+    # Build model
     x = base_model.output
     # Add some new Fully connected layers to
     x = GlobalAveragePooling2D()(x)
@@ -38,7 +38,7 @@ model.summary()
 
 # 3. Make data
 data_folder = "data"
-
+# Augmentation image data -> prevent overfit data model : rotate, shift, flip,...
 train_datagen = ImageDataGenerator(preprocessing_function= keras.applications.mobilenet.preprocess_input,rotation_range=0.2,
                                    width_shift_range=0.2,   height_shift_range=0.2,shear_range=0.3,zoom_range=0.5,
                                    horizontal_flip=True, vertical_flip=True,
